@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-red-500 {
+    background-color: #f56565;
+  }
+  .clip-polygon {
+    /* clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 0 20%); */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 25%, 0 25%);
+  }
+  .bar-shadow {
+    box-shadow: rgb(255, 255, 255) 0px 0px 5px;
+  }
+  .ws-29 {
+    word-spacing: 2.7vw;
+  }
+  .ws-20 {
+    word-spacing: 2.0vw;
+  }
+  .ws-17 {
+    word-spacing: 1.7vw;
+  }
+  .align-content-end {
+    transform: scaleY(-1);
+  }
+
+  .hoverTrigger .hoverTarget {
+    opacity: 0%;
+}
+
+  .hoverTrigger:hover .hoverTarget {
+    opacity: 100%;
+    transition: opacity 0.5s ease-in-out;
+  }
+}
