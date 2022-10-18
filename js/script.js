@@ -80,6 +80,7 @@ function handleFileLoad(event){
         
         document.getElementById("fileError").style.opacity = "0%";
         document.getElementById("statsArea").style.opacity = "100%";
+        handleUserInput(fileTruth);
     }
     else{
         document.getElementById("fileError").style.opacity = "100%";
@@ -115,10 +116,6 @@ function handleUserInput(trut){
                         constinuer = false;
                     }
                 }
-                // if (tmpArr[0] > 100 || tmpArr[11] < 0){
-                //     constinuer = false;
-                // }
-                console.log(constinuer);
                 if (constinuer == true){
                     var max = parseFloat(document.getElementById("max").value);
                     var aplus = parseFloat(document.getElementById("a+").value);
@@ -132,12 +129,10 @@ function handleUserInput(trut){
                     var cminus = parseFloat(document.getElementById("c-").value);
                     var d = parseFloat(document.getElementById("d").value);
                     var f = parseFloat(document.getElementById("f").value);
-                    
                     // Initialize the count array to all zeros
                     for (var f = 0; f < 11; f++){
                         countArr[f] = 0;
                     }
-
                     // Count the amount of values in each grade
                     for (var i = 1; i<arr.length; i++){
                         var tmp = parseFloat(arr[i][1]);
@@ -202,6 +197,24 @@ function handleUserInput(trut){
                     document.getElementById("fGraph").style.clipPath = frontWord + (((countArr[10] / largest) * 100)) + midWord + (((countArr[10] / largest) * 100)) + backWord;
 
                     // Make all elements visible and invisible
+                    // Check the max and make sure to cut off elements that exceed it
+                    var stopElement = 0;
+                    for (let i = 0; i<11; i++){
+                        if (tmpArr[i] > tmpArr[0]){
+                            stopElement = i;
+                            break;
+                        }
+                    }
+                    var docArray = ["aplusGraph", "aGraph", "aminusGraph", "bplusGraph", "bGraph", "bminusGraph", "cplusGraph", "cGraph", "cminusGraph", "dGraph", "fGraph"];
+                    if (stopElement != 0){ // Set all elements from 1-stopElement to invisible
+                        for (let i = 1; i<stopElement; i++){ // Might need to be stopElement +1? dont know
+                            document.getElementById(docArray[i-1]).style.visibility = "hidden";
+                        }
+                    }
+                    for (let i = 0; i<11; i++){
+                        document.getElementById(docArray[i]).style.visibility = "visible";
+                    }
+
                     document.getElementById("wholeGraph").style.opacity = "100%";
                     document.getElementById("boundError").style.opacity = "0%";
 
