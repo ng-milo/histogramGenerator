@@ -3,7 +3,11 @@ module.exports = {
   content: ["./*.html"],
   theme: {
     extend: {
-      visibility: ["group-hover"],
+      visibility: ["group-hover"]
+    },
+    screens: {
+      'Cus': {'raw': '(max-height: 959px)'},
+      'smH': {'raw': '(max-height: 744px)'}
     },
     height: {
       "85vh": "85vh",
@@ -30,7 +34,7 @@ module.exports = {
     },
     shadow: {
       "bar": "rgb(255, 255, 255) 0px 0px 5px;"
-    }
+    },
   },
   plugins: [],
 }

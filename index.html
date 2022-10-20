@@ -10,75 +10,75 @@
     <title>Histogram Generator</title>
 </head>
 
-<header>
-    <div class="bg-white m-4 rounded-lg p-5">
-        <p class="text-4xl pt-3 pb-3 pl-8 font-bold">Histogram Generator</p>
-        <div class="flex">
-            <input class="file:bg-gray-100 file:rounded-md hover:file:bg-gray-200 file:shadow-none block w-full text-sm text-black rounded-lg border-black pl-8" type="file" id="inputFile" accept=".csv" />
-            <p class="italic text-red-300 font-light opacity-0 transition-opacity ease-in-out" id="fileError">Error with file contents!</p>
+<body class="bg-red-600 bg-gradient-to-r from-pink-600 to-red-700">
+    <header>
+        <div class="bg-white m-4 rounded-lg p-5">
+            <p class="text-4xl pt-3 pb-3 pl-8 font-bold">Histogram Generator</p>
+            <div class="flex">
+                <input class="file:bg-gray-100 file:rounded-md hover:file:bg-gray-200 file:shadow-none block w-full text-sm text-black rounded-lg border-black pl-8" type="file" id="inputFile" accept=".csv">
+                <p class="italic text-red-300 font-light opacity-0 transition-opacity ease-in-out" id="fileError">Error with file contents!</p>
+            </div>
+    
         </div>
+    </header>
 
-    </div>
-</header>
-
-<body class="bg-red-600">
-    <div class="grid grid-cols-2 grid-rows-2 gap-4 p-8 m-4 bg-white h-85vh rounded-lg lg:h-85vh md:h-140vmin sm:h-240vmin">
+    <div class="grid grid-cols-2 grid-rows-2 gap-4 p-8 m-4 bg-white h-85vh rounded-lg lg:h-85vh Cus:h-120vmin sm:h-240vmin">
         <div class="row-span-2 bg-slate-200 rounded-lg">
             <div class="flex">
                 <h3 class="text-4xl pt-3 pb-3 pl-4 font-thin">Please Enter Bounds:</h3>
                 <p class="italic pt-6 pb-3 pl-4 text-red-300 font-light opacity-0 transition-opacity ease-in-out" id="boundError">Please ensure bounds are in decreasing order!</p>
             </div>
-            <article class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
+            <div class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
                 <span class=" inline-flex px-3 text-black text-sm items-center bg-gray-300 rounded-l-md border border-gray-300 w-16 border-r-0">Max</span>
                 <input type="text" id="max" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" placeholder="Enter a Number">
-            </article>
-            <article class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
+            </div>
+            <div class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
                 <span class=" inline-flex px-3 text-black text-sm items-center bg-gray-300 rounded-l-md border border-gray-300 w-16 border-r-0">A+</span>
                 <input type="text" id="a+" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" placeholder="Enter a Number">
-            </article>
-            <article class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
+            </div>
+            <div class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
                 <span class=" inline-flex px-3 text-black text-sm items-center bg-gray-300 rounded-l-md border border-gray-300 w-16 border-r-0">A</span>
                 <input type="text" id="a" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" placeholder="Enter a Number">
-            </article>
-            <article class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
+            </div>
+            <div class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
                 <span class=" inline-flex px-3 text-black text-sm items-center bg-gray-300 rounded-l-md border border-gray-300 w-16 border-r-0">A-</span>
                 <input type="text" id="a-" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" placeholder="Enter a Number">
-            </article>
-            <article class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
+            </div>
+            <div class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
                 <span class=" inline-flex px-3 text-black text-sm items-center bg-gray-300 rounded-l-md border border-gray-300 w-16 border-r-0">B+</span>
                 <input type="text" id="b+" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" placeholder="Enter a Number">
-            </article>
-            <article class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
+            </div>
+            <div class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
                 <span class=" inline-flex px-3 text-black text-sm items-center bg-gray-300 rounded-l-md border border-gray-300 w-16 border-r-0">B</span>
                 <input type="text" id="b" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" placeholder="Enter a Number">
-            </article>
-            <article class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
+            </div>
+            <div class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
                 <span class=" inline-flex px-3 text-black text-sm items-center bg-gray-300 rounded-l-md border border-gray-300 w-16 border-r-0">B-</span>
                 <input type="text" id="b-" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" placeholder="Enter a Number">
-            </article>
-            <article class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
+            </div>
+            <div class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
                 <span class=" inline-flex px-3 text-black text-sm items-center bg-gray-300 rounded-l-md border border-gray-300 w-16 border-r-0">C+</span>
                 <input type="text" id="c+" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" placeholder="Enter a Number">
-            </article>
-            <article class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
+            </div>
+            <div class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
                 <span class=" inline-flex px-3 text-black text-sm items-center bg-gray-300 rounded-l-md border border-gray-300 w-16 border-r-0">C</span>
                 <input type="text" id="c" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" placeholder="Enter a Number">
-            </article>
-            <article class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
+            </div>
+            <div class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
                 <span class=" inline-flex px-3 text-black text-sm items-center bg-gray-300 rounded-l-md border border-gray-300 w-16 border-r-0">C-</span>
                 <input type="text" id="c-" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" placeholder="Enter a Number">
-            </article>
-            <article class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
+            </div>
+            <div class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
                 <span class=" inline-flex px-3 text-black text-sm items-center bg-gray-300 rounded-l-md border border-gray-300 w-16 border-r-0">D</span>
                 <input type="text" id="d" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" placeholder="Enter a Number">
-            </article>
-            <article class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
+            </div>
+            <div class="flex pr-3 pl-3 pb-3 lg:pb-2 md:pb-1.5">
                 <span class=" inline-flex px-3 text-black text-sm items-center bg-gray-300 rounded-l-md border border-gray-300 w-16 border-r-0">F</span>
                 <input type="text" id="f" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" placeholder="Enter a Number">
-            </article>
+            </div>
         </div>
         <div class="bg-slate-200 rounded-lg">
-            <div class="pl-1.5 pt-10 max-h-fit opacity-0 transition-opacity ease-in-out" id="wholeGraph">
+            <div class="pl-1.5 pt-10 max-h-fit opacity-0 transition-opacity ease-in-out Cus:pt-20 smH:pt-5" id="wholeGraph">
                 <div class="float-left align-content-end w-9per h-300 shadow-lg  bg-red-200 clip-polygon hoverTrigger" id="aplusGraph">
                     <p class="text-lg font-extralight text-white text-center align-content-end pb-3 hoverTarget">5</p>
                 </div>
@@ -113,38 +113,38 @@
                     <p class="text-lg font-extralight text-white text-center align-content-end pb-3 hoverTarget">5</p>
                 </div>
                 <div id="grades">
-                    <div class="float-left text-center w-9per font-semibold text-lg">A+</div>
-                    <div class="float-left text-center w-9per font-semibold text-lg">A</div>
-                    <div class="float-left text-center w-9per font-semibold text-lg">A-</div>
-                    <div class="float-left text-center w-9per font-semibold text-lg">B+</div>
-                    <div class="float-left text-center w-9per font-semibold text-lg">B</div>
-                    <div class="float-left text-center w-9per font-semibold text-lg">B-</div>
-                    <div class="float-left text-center w-9per font-semibold text-lg">C+</div>
-                    <div class="float-left text-center w-9per font-semibold text-lg">C</div>
-                    <div class="float-left text-center w-9per font-semibold text-lg">C-</div>
-                    <div class="float-left text-center w-9per font-semibold text-lg">D</div>
-                    <div class="float-left text-center w-9per font-semibold text-lg">F</div>
+                    <div class="float-left text-center w-9per font-semibold text-lg" id="gradesAplus">A+</div>
+                    <div class="float-left text-center w-9per font-semibold text-lg" id="gradesA">A</div>
+                    <div class="float-left text-center w-9per font-semibold text-lg" id="gradesAminus">A-</div>
+                    <div class="float-left text-center w-9per font-semibold text-lg" id="gradesBplus">B+</div>
+                    <div class="float-left text-center w-9per font-semibold text-lg" id="gradesB">B</div>
+                    <div class="float-left text-center w-9per font-semibold text-lg" id="gradesBminus">B-</div>
+                    <div class="float-left text-center w-9per font-semibold text-lg" id="gradesCplus">C+</div>
+                    <div class="float-left text-center w-9per font-semibold text-lg" id="gradesC">C</div>
+                    <div class="float-left text-center w-9per font-semibold text-lg" id="gradesCminus">C-</div>
+                    <div class="float-left text-center w-9per font-semibold text-lg" id="gradesD">D</div>
+                    <div class="float-left text-center w-9per font-semibold text-lg" id="gradesF">F</div>
                 </div>
             </div>
         </div>
         <div class="bg-slate-200 rounded-lg">
             <div class="pl-5 pt-5 opacity-0 transition-opacity ease-in-out" id="statsArea">
-                <article class="flex pt-12 pr-6 pl-2 pb-3 lg:pb-2 md:pb-1.5">
+                <div class="flex pt-12 pr-6 pl-2 pb-3 lg:pb-2 md:pb-1.5">
                     <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-300 rounded-l-md border border-r-0 border-gray-300 w-80">Highest:</span>
                     <input type="text" id="highest" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" value="Mitch Twells" disabled readonly>
-                </article>
-                <article class="flex pr-6 pl-2 pb-3 lg:pb-2 md:pb-1.5">
+                </div>
+                <div class="flex pr-6 pl-2 pb-3 lg:pb-2 md:pb-1.5">
                     <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-300 rounded-l-md border border-r-0 border-gray-300 w-80">Lowest:</span>
                     <input type="text" id="lowest" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" value="Lucas Chen" disabled readonly>
-                </article>
-                <article class="flex pr-6 pl-2 pb-3 lg:pb-2 md:pb-1.5">
+                </div>
+                <div class="flex pr-6 pl-2 pb-3 lg:pb-2 md:pb-1.5">
                     <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-300 rounded-l-md border border-r-0 border-gray-300 w-80">Mean:</span>
                     <input type="text" id="mean" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" value="50%" disabled readonly>
-                </article>
-                <article class="flex pr-6 pl-2 pb-3 lg:pb-2 md:pb-1.5">
+                </div>
+                <div class="flex pr-6 pl-2 pb-3 lg:pb-2 md:pb-1.5">
                     <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-300 rounded-l-md border border-r-0 border-gray-300 w-80">Median:</span>
                     <input type="text" id="median" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5" value="0%" disabled readonly>
-                </article>
+                </div>
             </div>
         </div>
     </div>

@@ -111,7 +111,7 @@ function handleUserInput(trut){
                 tmpArr.push(parseFloat(document.getElementById("f").value));
                 // Check if the values are in the correct order
                 var constinuer = true;
-                for (var i = 0; i<tmpArr.length-1; i++){
+                for (var i = 1; i<tmpArr.length-1; i++){
                     if (tmpArr[i] <= tmpArr[i+1]){
                         constinuer = false;
                     }
@@ -197,27 +197,56 @@ function handleUserInput(trut){
                     document.getElementById("fGraph").style.clipPath = frontWord + (((countArr[10] / largest) * 100)) + midWord + (((countArr[10] / largest) * 100)) + backWord;
 
                     // Make all elements visible and invisible
+                    let docArray = ["aplusGraph", "aGraph", "aminusGraph", "bplusGraph", "bGraph", "bminusGraph", "cplusGraph", "cGraph", "cminusGraph", "dGraph", "fGraph"];
+                    let gradeDisplay = ["gradesAplus", "gradesA", "gradesAminus", "gradesBplus", "gradesB", "gradesBminus", "gradesCplus", "gradesC", "gradesCminus", "gradesD", "gradesF"];
+                    document.getElementById("aplusGraph").style.display = "block";
+                    document.getElementById("aGraph").style.display = "block";
+                    document.getElementById("aminusGraph").style.display = "block";
+                    document.getElementById("bplusGraph").style.display = "block";
+                    document.getElementById("bGraph").style.display = "block";
+                    document.getElementById("bminusGraph").style.display = "block"; 
+                    document.getElementById("cplusGraph").style.display = "block";
+                    document.getElementById("cGraph").style.display = "block";
+                    document.getElementById("cminusGraph").style.display = "block";
+                    document.getElementById("dGraph").style.display = "block";
+                    document.getElementById("fGraph").style.display = "block";
+
+                    document.getElementById("gradesAplus").style.display = "block";
+                    document.getElementById("gradesA").style.display = "block";
+                    document.getElementById("gradesAminus").style.display = "block";
+                    document.getElementById("gradesBplus").style.display = "block";
+                    document.getElementById("gradesB").style.display = "block";
+                    document.getElementById("gradesBminus").style.display = "block"; 
+                    document.getElementById("gradesCplus").style.display = "block";
+                    document.getElementById("gradesC").style.display = "block";
+                    document.getElementById("gradesCminus").style.display = "block";
+                    document.getElementById("gradesD").style.display = "block";
+                    document.getElementById("gradesF").style.display = "block";
                     // Check the max and make sure to cut off elements that exceed it
-                    var stopElement = 0;
-                    for (let i = 0; i<11; i++){
+                    let stopElement = 0;
+                    for (let i = 1; i<12; i++){
                         if (tmpArr[i] > tmpArr[0]){
                             stopElement = i;
-                            break;
                         }
                     }
-                    var docArray = ["aplusGraph", "aGraph", "aminusGraph", "bplusGraph", "bGraph", "bminusGraph", "cplusGraph", "cGraph", "cminusGraph", "dGraph", "fGraph"];
-                    if (stopElement != 0){ // Set all elements from 1-stopElement to invisible
-                        for (let i = 1; i<stopElement; i++){ // Might need to be stopElement +1? dont know
-                            document.getElementById(docArray[i-1]).style.visibility = "hidden";
-                        }
-                    }
+                    // Set sizing of bars
+                    let numofBars = 11 - stopElement;
+                    let newSizing = Math.floor(100 / numofBars);
                     for (let i = 0; i<11; i++){
-                        document.getElementById(docArray[i]).style.visibility = "visible";
+                        document.getElementById(docArray[i]).style.width = newSizing + "%";
+                        document.getElementById(gradeDisplay[i]).style.width = newSizing + "%";
                     }
-
+                    if (stopElement != 0){ // Set all elements from 1-stopElement to invisible
+                        for (let i = 0; i<stopElement; i++){ // Might need to be stopElement +1? dont know
+                            document.getElementById(docArray[i]).style.display = "none";
+                            document.getElementById(gradeDisplay[i]).style.display = "none";
+                        }
+                    }
+                    // Make the entire graph visible
                     document.getElementById("wholeGraph").style.opacity = "100%";
+                    // Make the error message invisible
                     document.getElementById("boundError").style.opacity = "0%";
-
+                    // Make it so that hovering shows number
                     document.getElementById("aplusGraph").firstElementChild.textContent = countArr[0];
                     document.getElementById("aGraph").firstElementChild.textContent = countArr[1];
                     document.getElementById("aminusGraph").firstElementChild.textContent = countArr[2];
@@ -229,7 +258,6 @@ function handleUserInput(trut){
                     document.getElementById("cminusGraph").firstElementChild.textContent = countArr[8];
                     document.getElementById("dGraph").firstElementChild.textContent = countArr[9];
                     document.getElementById("fGraph").firstElementChild.textContent = countArr[10];
-
                 }
                 else{
                     document.getElementById("boundError").style.opacity = "100%";
@@ -239,7 +267,35 @@ function handleUserInput(trut){
     }
 }
 
-
+function testInput(inp){
+    let tmp = inp.value.replace(/[^0-9.]/g, '');
+    tmp.replace(/^0[^.]/, '0');
+    if (tmp.indexOf('.') != -1){ // There exists a decimal
+        let count = 0;
+        for (let i = 0; i<tmp.length; i++){
+            if (tmp[i] == '.'){
+                count += 1;
+            }
+        }
+        if (count > 1){ // Repalces any other decimals
+            // Reverse string to not mess up the first decimal
+            let rev = tmp.split("").reverse().join("");
+            for (let i = 0; i<count-1; i++){
+                rev = rev.replace('.', '');
+            }
+            // Make the string back to the original
+            tmp = rev.split("").reverse().join("");
+        }
+    }
+    if (tmp != inp.value || (parseFloat(inp.value)) === false) { // Display error message
+        inp.setCustomValidity("Please ensure input only contains numbers");
+        inp.value = tmp;
+    }
+    else {
+        inp.setCustomValidity("");
+    }
+    inp.reportValidity();
+}
 
     
 const fileSelector = document.getElementById('inputFile');
@@ -270,18 +326,18 @@ fileSelector.addEventListener('change', (event) => {
 // Listen for file upload
 document.getElementById('inputFile').addEventListener('change', handleFileSelect, false);
 // Listen for text input changes
-document.getElementById("max").oninput = function() {handleUserInput(fileTruth)};
-document.getElementById("a+").oninput = function() {handleUserInput(fileTruth)};
-document.getElementById("a").oninput = function() {handleUserInput(fileTruth)};
-document.getElementById("a-").oninput = function() {handleUserInput(fileTruth)};
-document.getElementById("b+").oninput = function() {handleUserInput(fileTruth)};
-document.getElementById("b").oninput = function() {handleUserInput(fileTruth)};
-document.getElementById("b-").oninput = function() {handleUserInput(fileTruth)};
-document.getElementById("c+").oninput = function() {handleUserInput(fileTruth)};
-document.getElementById("c").oninput = function() {handleUserInput(fileTruth)};
-document.getElementById("c-").oninput = function() {handleUserInput(fileTruth)};
-document.getElementById("d").oninput = function() {handleUserInput(fileTruth)};
-document.getElementById("f").oninput = function() {handleUserInput(fileTruth)};
+document.getElementById("max").oninput = function() {handleUserInput(fileTruth); testInput(this); testInput(this)};
+document.getElementById("a+").oninput = function() {handleUserInput(fileTruth); testInput(this)};
+document.getElementById("a").oninput = function() {handleUserInput(fileTruth); testInput(this)};
+document.getElementById("a-").oninput = function() {handleUserInput(fileTruth); testInput(this)};
+document.getElementById("b+").oninput = function() {handleUserInput(fileTruth); testInput(this)};
+document.getElementById("b").oninput = function() {handleUserInput(fileTruth); testInput(this)};
+document.getElementById("b-").oninput = function() {handleUserInput(fileTruth); testInput(this)};
+document.getElementById("c+").oninput = function() {handleUserInput(fileTruth); testInput(this)};
+document.getElementById("c").oninput = function() {handleUserInput(fileTruth); testInput(this)};
+document.getElementById("c-").oninput = function() {handleUserInput(fileTruth); testInput(this)};
+document.getElementById("d").oninput = function() {handleUserInput(fileTruth); testInput(this)};
+document.getElementById("f").oninput = function() {handleUserInput(fileTruth); testInput(this)};
 
 
 
